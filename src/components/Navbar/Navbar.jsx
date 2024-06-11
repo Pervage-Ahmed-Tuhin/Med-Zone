@@ -67,7 +67,7 @@ const Navbar = () => {
 
                 </> : <>
                     <div className="navbar-end">
-                        <NavLink to='/register'>join us</NavLink>
+                        <NavLink to='/login'>join us</NavLink>
                     </div>
 
                 </>
