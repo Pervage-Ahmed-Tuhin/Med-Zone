@@ -50,7 +50,7 @@ const Navbar = () => {
                     <div className="dropdown dropdown-end ml-3">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
-                                <img alt="Tailwind CSS Navbar component" src={user.photoUrl} />
+                                <img alt="Tailwind CSS Navbar component" src={user.photoURL} />
                             </div>
                         </div>
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
@@ -67,7 +67,7 @@ const Navbar = () => {
 
                 </> : <>
                     <div className="navbar-end">
-                        <a className="btn">Join Us</a>
+                        <NavLink to='/register'>join us</NavLink>
                     </div>
 
                 </>

@@ -12,6 +12,7 @@ import Root from './components/Root/Root.jsx';
 import ErrorPage from './components/Error/ErrorPage.jsx';
 import Home from './components/Home/Home.jsx';
 import AuthProvider from './components/Provider/AuthProvider.jsx';
+import Register from './components/Register/Register.jsx';
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>
+      },
+      {
+        path: '/register',
+        element: <Register></Register>
       }
     ]
   },
