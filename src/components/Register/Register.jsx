@@ -88,7 +88,7 @@ const Register = () => {
             navigate('/register');
         }
 
-      
+
     };
     return (
         <div>
@@ -125,6 +125,7 @@ const Register = () => {
 
                         </span>
                     </div>
+                    <span className="text-red-900 text-xl mt-6">Upload your photo</span>
                     <input name="photo" type="file" className="file-input file-input-bordered file-input-warning w-full max-w-xs mt-9 border-none outline-none" {...register("photo")} />
                     <a href="#" className=" text-red-900 md:text-white mt-8 text-2xl font-bold">Have an account? <br /> <Link to='/login' className="text-red-900 underline">Log In</Link></a>
                     <button type="submit" className="py-3 px-20 bg-red-900 rounded-full text-white font-bold uppercase text-lg mt-4 transform hover:translate-y-1 transition-all duration-500">Register</button>
