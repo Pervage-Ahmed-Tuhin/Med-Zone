@@ -17,6 +17,15 @@ import Login from './components/Login/Login.jsx';
 import PrivateRoute from './components/Private/PrivateRoute.jsx';
 import UpdateUser from './components/Update/UpdateUser.jsx';
 
+import {
+
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
+import Shop from './components/Shop/Shop.jsx';
+
+const queryClient = new QueryClient()
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -39,6 +48,11 @@ const router = createBrowserRouter([
       {
         path: '/updateUser',
         element: <PrivateRoute><UpdateUser></UpdateUser></PrivateRoute>
+      },
+      {
+        path:'/shop',
+        element:<Shop></Shop>,
+        loader:()=>fetch('http://localhost:5000/productCount')
       }
     ]
   },
@@ -51,13 +65,16 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <AuthProvider>
-      <HelmetProvider>
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <HelmetProvider>
 
-        <RouterProvider router={router} />
+          <RouterProvider router={router} />
 
-      </HelmetProvider>
-    </AuthProvider>
+        </HelmetProvider>
+      </AuthProvider>
+
+    </QueryClientProvider>
 
   </React.StrictMode>,
 )

@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet";
 import Banner from "../Banner/Banner";
 import { useLoaderData } from "react-router-dom";
+import HomeCategory from "../CategoryBox/HomeCategory";
 
 
 const Home = () => {
@@ -13,6 +14,8 @@ const Home = () => {
             </Helmet>
 
             <Banner data={data}></Banner>
+
+            <HomeCategory></HomeCategory>
 
         </div>
     );
