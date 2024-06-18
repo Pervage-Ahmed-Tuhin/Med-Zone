@@ -47,7 +47,7 @@ const HomeCategory = () => {
             <div
               key={soloCategory.category} // Ensure unique key for each element
               onClick={() => {
-                navigate("/dynamic-path");
+                navigate(`/UniqueCategory/${soloCategory.category}`);
               }}
               className="flip-card"
               tabIndex="0"

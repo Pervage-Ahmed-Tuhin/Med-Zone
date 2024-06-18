@@ -60,7 +60,7 @@ const UpdateUser = () => {
                         <FaUser className='text-xl font-bold text-black' />
                         <input
                             type="text"
-                            placeholder="Name" defaultValue={user.displayName}
+                            placeholder="Name" defaultValue={user?.displayName}
                             {...register("name", { required: true })}
                             className="pl-8 border-b-2 font-play-fare focus:outline-none focus:border-[#00BFA6]transition-all duration-500  text-lg"
                         />
@@ -70,7 +70,7 @@ const UpdateUser = () => {
                         <MdAddAPhoto className='text-xl font-bold text-black' />
                         <input
                             type="text"
-                            placeholder="photoURL" defaultValue={user.photoURL}
+                            placeholder="photoURL" defaultValue={user?.photoURL}
                             {...register("photoURL", { required: true })}
                             className="pl-8 border-b-2 font-play-fare focus:outline-none focus:border-[#00BFA6] transition-all duration-500  text-lg"
                         />
