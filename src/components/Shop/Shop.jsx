@@ -3,6 +3,7 @@ import { useLoaderData } from "react-router-dom";
 import axios from "axios";
 import "./shop.css";
 import { FaEye } from "react-icons/fa";
+import { Helmet } from "react-helmet";
 const Shop = () => {
   const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
@@ -22,7 +23,7 @@ const Shop = () => {
       .catch((error) => console.error("Error fetching products:", error));
   }, [currentPage, itemsPerPage]);
 
-  
+
   const [selectedProduct, setSelectedProduct] = useState(null);
   const modalRef = useRef(null);
   useEffect(() => {
@@ -62,6 +63,9 @@ const Shop = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Multi-Vendor||Shop</title>
+      </Helmet>
       <div className="mt-20 mb-9">
         <p className="text-xl text-center">Current Page : {currentPage}</p>
         <div className="flex justify-center mt-6 pagination">
@@ -92,7 +96,7 @@ const Shop = () => {
           </select>
         </div>
       </div>
-     
+
 
       {/* start */}
 
@@ -138,7 +142,7 @@ const Shop = () => {
                   <button className="btn">Select</button>
                 </td>
                 <th>
-                <button className="btn text-xl" onClick={() => handleViewClick(product)}>
+                  <button className="btn text-xl" onClick={() => handleViewClick(product)}>
                     <FaEye />
                   </button>
                 </th>
@@ -146,31 +150,31 @@ const Shop = () => {
             ))}
           </tbody>
         </table>
-         {/* Modal */}
-      {selectedProduct && (
-        <dialog id="my_modal_2" className="modal" ref={modalRef}>
-          <div className="modal-box">
-            <div className="card card-compact bg-base-100 shadow-xl">
-              <figure><img src={selectedProduct.image_url} alt="Product" /></figure>
-              <div className="card-body">
-                <h2 className="card-title">Name : {selectedProduct.name}</h2>
-                <h2 className="card-title">Category : {selectedProduct.category}</h2>
-                <p>Description : {selectedProduct.description}</p>
-                <p>Price : <span>${selectedProduct.price.toFixed(2)}</span></p>
-                <p>Vendor : <span>{selectedProduct.vendor}</span></p>
-                <p>Stock : <span>{selectedProduct.stock}</span></p>
+        {/* Modal */}
+        {selectedProduct && (
+          <dialog id="my_modal_2" className="modal" ref={modalRef}>
+            <div className="modal-box">
+              <div className="card card-compact bg-base-100 shadow-xl">
+                <figure><img src={selectedProduct.image_url} alt="Product" /></figure>
+                <div className="card-body">
+                  <h2 className="card-title">Name : {selectedProduct.name}</h2>
+                  <h2 className="card-title">Category : {selectedProduct.category}</h2>
+                  <p>Description : {selectedProduct.description}</p>
+                  <p>Price : <span>${selectedProduct.price.toFixed(2)}</span></p>
+                  <p>Vendor : <span>{selectedProduct.vendor}</span></p>
+                  <p>Stock : <span>{selectedProduct.stock}</span></p>
+                </div>
               </div>
             </div>
-          </div>
-          <form method="dialog" className="modal-backdrop" onClick={handleCloseModal}>
-            <button type="button">Close</button>
-          </form>
-        </dialog>
-      )}
+            <form method="dialog" className="modal-backdrop" onClick={handleCloseModal}>
+              <button type="button">Close</button>
+            </form>
+          </dialog>
+        )}
       </div>
     </div>
 
-   
+
   );
 };
 
