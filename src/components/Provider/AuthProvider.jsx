@@ -9,6 +9,7 @@ const GoogleProvider = new GoogleAuthProvider();
 
 import { GithubAuthProvider } from "firebase/auth";
 import auth from "../../Firebase/firebase.config";
+import axios from "axios";
 
 const GithubProvider = new GithubAuthProvider();
 
@@ -55,7 +56,22 @@ const AuthProvider = ({ children }) => {
             });
     }
 
+    // Save user in database
 
+    // Save user in database
+    const saveUser = async (user) => {
+        const currentUser = {
+            email: user?.email,
+            role: 'guest',
+            status: 'verified',
+        };
+        try {
+            const { data } = await axios.put('http://localhost:5000/user', currentUser);
+            return data;
+        } catch (error) {
+            console.error('Error saving user to the database:', error);
+        }
+    };
     const loginUser = (email, password) => {
         setLoader(true);
         return signInWithEmailAndPassword(auth, email, password);
@@ -65,6 +81,9 @@ const AuthProvider = ({ children }) => {
         const Unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
             setInfoHolder(currentUser);
+            if (currentUser) {
+                saveUser(currentUser);
+            }
             setLoader(false);
 
         });
