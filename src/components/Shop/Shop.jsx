@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import axios from "axios";
 import "./shop.css";
@@ -21,6 +21,26 @@ const Shop = () => {
       .then((res) => setProducts(res.data))
       .catch((error) => console.error("Error fetching products:", error));
   }, [currentPage, itemsPerPage]);
+
+  
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const modalRef = useRef(null);
+  useEffect(() => {
+    if (selectedProduct && modalRef.current) {
+      modalRef.current.showModal();
+    }
+  }, [selectedProduct]);
+
+  const handleViewClick = (product) => {
+    setSelectedProduct(product);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedProduct(null);
+    if (modalRef.current) {
+      modalRef.current.close();
+    }
+  };
 
   const handleItemsOnChange = (e) => {
     const val = parseInt(e.target.value);
@@ -118,7 +138,7 @@ const Shop = () => {
                   <button className="btn">Select</button>
                 </td>
                 <th>
-                  <button className="btn text-xl">
+                <button className="btn text-xl" onClick={() => handleViewClick(product)}>
                     <FaEye />
                   </button>
                 </th>
@@ -126,6 +146,27 @@ const Shop = () => {
             ))}
           </tbody>
         </table>
+         {/* Modal */}
+      {selectedProduct && (
+        <dialog id="my_modal_2" className="modal" ref={modalRef}>
+          <div className="modal-box">
+            <div className="card card-compact bg-base-100 shadow-xl">
+              <figure><img src={selectedProduct.image_url} alt="Product" /></figure>
+              <div className="card-body">
+                <h2 className="card-title">Name : {selectedProduct.name}</h2>
+                <h2 className="card-title">Category : {selectedProduct.category}</h2>
+                <p>Description : {selectedProduct.description}</p>
+                <p>Price : <span>${selectedProduct.price.toFixed(2)}</span></p>
+                <p>Vendor : <span>{selectedProduct.vendor}</span></p>
+                <p>Stock : <span>{selectedProduct.stock}</span></p>
+              </div>
+            </div>
+          </div>
+          <form method="dialog" className="modal-backdrop" onClick={handleCloseModal}>
+            <button type="button">Close</button>
+          </form>
+        </dialog>
+      )}
       </div>
     </div>
 
