@@ -1,11 +1,11 @@
 
-import { useEffect } from "react";
+import { FaTrashCan } from "react-icons/fa6";
 import useAxiosSecure from "../Hooks/useAxiosSecure ";
 import useCart from "../Hooks/useCart";
 import Swal from "sweetalert2";
 
 const Cart = () => {
-    const [cartData] = useCart();
+    const [cartData, refetch] = useCart();
     console.log(cartData);
 
     const axiosSecure = useAxiosSecure();
@@ -26,7 +26,7 @@ const Cart = () => {
                     showConfirmButton: false,
                     timer: 1500
                 });
-              
+
             }
 
             // Update local cart data after successful update (if needed)
@@ -51,11 +51,96 @@ const Cart = () => {
 
         // Log the updated cart data
         console.log(updatedCartData);
-    }
 
+    }
+    const handleDelete = (id) => {
+        console.log(id);
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+
+                try {
+                    const response = await axiosSecure.delete(`/cartInformation/${id}`);
+                    if (response.data.deletedCount > 0) {
+                        refetch();
+                        Swal.fire({
+                            position: "top-end",
+                            icon: "success",
+                            title: "Item was deleted",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+
+                    }
+
+                } catch (error) {
+                    console.error("Error deleting item:", error);
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: "Something went wrong!",
+                    });
+                }
+
+            }
+        });
+    }
+    const handleClearCart = () => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+
+                try {
+                    const response = await axiosSecure.delete(`/deleteAllCartInformation`);
+                    if (response.data.deletedCount > 0) {
+                        refetch();
+                        Swal.fire({
+                            position: "top-end",
+                            icon: "success",
+                            title: "The cart info was deleted",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+
+                    }
+
+                } catch (error) {
+                    console.error("Error deleting item:", error);
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: "Something went wrong!",
+                    });
+                }
+
+            }
+        });
+    }
     return (
         <div>
-            <h1 className="text-2xl text-center font-semibold mt-8 mb-6">Your total Cart items: {cartData.length}</h1>
+            <div className="flex justify-center items-center gap-5 mt-8 mb-6">
+                <h1 className="text-2xl text-center font-semibold ">Your total Cart items: {cartData.length}</h1>
+
+                <button onClick={handleClearCart} className="btn">Clear Cart</button>
+
+                <button className="btn">Checkout</button>
+
+            </div>
+
             <div className="mt-8 mb-6">
                 {/* Start */}
                 <div className="overflow-x-auto">
@@ -69,6 +154,7 @@ const Cart = () => {
                                 <th>Price</th>
                                 <th>Company</th>
                                 <th>Quantity</th>
+                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -113,12 +199,15 @@ const Cart = () => {
                                             </form>
                                         </dialog>
                                     </td>
+                                    <td><button onClick={() => handleDelete(product._id)} className="btn"><FaTrashCan /></button></td>
                                 </tr>
                             ))}
                         </tbody>
                     </table>
                 </div>
             </div>
+
+
         </div>
     );
 };
