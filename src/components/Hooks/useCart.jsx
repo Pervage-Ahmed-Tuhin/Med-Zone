@@ -12,7 +12,7 @@ const useCart = () => {
         error,
         refetch
     } = useQuery({
-        queryKey: ["cart"],
+        queryKey: ["cart", user?.email],
         enabled: !!user && !!user.email,
         queryFn: async () => {
             try {
