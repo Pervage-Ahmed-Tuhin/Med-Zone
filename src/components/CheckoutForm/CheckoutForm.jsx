@@ -106,7 +106,7 @@ const CheckoutForm = ({ grandTotal }) => {
                 transactionId: paymentIntent.id,
                 date: new Date(),
                 cartData: cartData, // include cartData
-                userEmail: user?.email, // additional information
+                email: user?.email, // additional information
                 userName: user?.displayName, // additional information
                 totalAmount: grandTotal // additional information
             }
@@ -129,7 +129,7 @@ const CheckoutForm = ({ grandTotal }) => {
                 }
 
 
-                // navigate('/dashboard/my-bookings')
+                navigate('/InvoicePage');
             } catch (err) {
                 console.log(err)
             }

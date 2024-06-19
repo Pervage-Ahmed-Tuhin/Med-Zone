@@ -26,6 +26,7 @@ import Shop from './components/Shop/Shop.jsx';
 import UniqueCategoryHolder from './components/UniqueCategoryHolder/UniqueCategoryHolder.jsx';
 import Cart from './components/Cart/Cart.jsx';
 import CheckOutPage from './components/CheckOutPage/CheckOutPage.jsx';
+import InvoicePage from './components/InnovacePage/InvoicePage.jsx';
 
 
 const queryClient = new QueryClient()
@@ -69,6 +70,10 @@ const router = createBrowserRouter([
       {
         path: '/checkOut',
         element: <PrivateRoute><CheckOutPage></CheckOutPage></PrivateRoute>
+      },
+      {
+        path: '/InvoicePage',
+        element: <PrivateRoute><InvoicePage></InvoicePage></PrivateRoute>
       }
     ]
   },
