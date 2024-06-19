@@ -89,7 +89,7 @@ const Login = () => {
     }
 
     useEffect(() => {
-        document.title = "DinerZZ|Login";
+        document.title = "MedZone|Login";
     }, [])
     return (
         <div>

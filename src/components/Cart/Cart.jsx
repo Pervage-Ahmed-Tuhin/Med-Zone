@@ -4,13 +4,14 @@ import useAxiosSecure from "../Hooks/useAxiosSecure ";
 import useCart from "../Hooks/useCart";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 
 const Cart = () => {
     const [cartData, refetch] = useCart();
-  
+
     console.log(cartData);
-   
+
 
     const axiosSecure = useAxiosSecure();
     // Function to handle quantity update submission
@@ -136,6 +137,9 @@ const Cart = () => {
     }
     return (
         <div>
+            <Helmet>
+                <title>Multi-Vendor||Cart</title>
+            </Helmet>
             <div className="flex justify-center items-center gap-5 mt-8 mb-6">
                 <h1 className="text-2xl text-center font-semibold ">Your total Cart items: {cartData.length}</h1>
 

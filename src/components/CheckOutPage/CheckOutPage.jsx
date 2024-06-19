@@ -1,6 +1,11 @@
 
+import { Helmet } from "react-helmet";
 import useCart from "../Hooks/useCart";
+import { loadStripe } from '@stripe/stripe-js'
+import { Elements } from '@stripe/react-stripe-js'
+import CheckoutForm from "../CheckoutForm/CheckoutForm";
 
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY)
 const CheckOutPage = () => {
     const [cartData] = useCart();
 
@@ -11,6 +16,9 @@ const CheckOutPage = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Multi-Vendor||CheckOut</title>
+            </Helmet>
             <h1 className="text-2xl text-center font-semibold mt-8 mb-6">Your Total Cost is: ${grandTotal.toFixed(2)}</h1>
             <div className="mt-8 mb-6">
                 {/* Display cart items */}
@@ -44,6 +52,14 @@ const CheckOutPage = () => {
                     </table>
                 </div>
             </div>
+
+            <Elements stripe={stripePromise}>
+                {/* checkout form */}
+                <CheckoutForm
+                    grandTotal={grandTotal}
+                />
+            </Elements>
+
         </div>
     );
 };
