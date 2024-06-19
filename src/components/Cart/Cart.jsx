@@ -3,10 +3,14 @@ import { FaTrashCan } from "react-icons/fa6";
 import useAxiosSecure from "../Hooks/useAxiosSecure ";
 import useCart from "../Hooks/useCart";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
+
 
 const Cart = () => {
     const [cartData, refetch] = useCart();
+  
     console.log(cartData);
+   
 
     const axiosSecure = useAxiosSecure();
     // Function to handle quantity update submission
@@ -137,7 +141,10 @@ const Cart = () => {
 
                 <button onClick={handleClearCart} className="btn">Clear Cart</button>
 
-                <button className="btn">Checkout</button>
+                <Link to='/checkOut'>
+                    <button className="btn" >Checkout</button>
+                </Link>
+
 
             </div>
 

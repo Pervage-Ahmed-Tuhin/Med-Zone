@@ -2,18 +2,28 @@ import { NavLink } from "react-router-dom";
 import { FiShoppingCart } from "react-icons/fi";
 import useAuth from "../Hooks/useAuth";
 import useCart from "../Hooks/useCart";
+import Swal from "sweetalert2";
 const Navbar = () => {
 
 
     const { user, LogOutUser } = useAuth();
 
-    const [cartData] = useCart();
+    const [cartData, refetch] = useCart();
     console.log(user);
 
     const handleLogout = () => {
         LogOutUser()
             .then(result => {
-                console.log("Signed out Successfully", result);
+                refetch();
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Logged out Successfully",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+
+                console.log(result);
             })
             .catch(error => {
                 console.log(error);

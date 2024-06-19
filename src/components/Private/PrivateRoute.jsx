@@ -1,25 +1,29 @@
-
 import { Navigate, useLocation } from 'react-router-dom';
 
+import Spinner from '../Spinner/Spinner';
 import useAuth from '../Hooks/useAuth';
 
 const PrivateRoute = ({ children }) => {
     const location = useLocation();
-    const { user, loader } = useAuth();
+
+    const { loader, user } = useAuth();
+
+    console.log(location);
     if (loader) {
-        return <div className="flex justify-center items-center">
-            <span className="mt-[50%] md:mt-[40%] loading loading-spinner loading-lg text-2xl"></span>
-        </div>
+        return <Spinner></Spinner>
 
     }
-
     if (!user) {
 
         return <Navigate state={location?.pathname || '/'} to="/login"></Navigate>
 
     }
 
-  
+
+
+
+
+
 
     return children;
 };

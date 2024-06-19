@@ -12,6 +12,7 @@ import auth from "../../Firebase/firebase.config";
 import axios from "axios";
 import useAxiosPublic from "../Hooks/useAxiosPublic ";
 
+
 const GithubProvider = new GithubAuthProvider();
 
 export const AuthContext = createContext(null);
@@ -28,6 +29,8 @@ const AuthProvider = ({ children }) => {
         setLoader(true);
         return createUserWithEmailAndPassword(auth, email, password);
     }
+
+   
 
 
     const LogOutUser = () => {
@@ -49,13 +52,7 @@ const AuthProvider = ({ children }) => {
         return updateProfile(auth.currentUser, {
             displayName: name, photoURL: photoURL
         })
-            .then(() => {
-
-                // console.log("update successful");
-            })
-            .catch((error) => {
-                // console.log(error);
-            });
+           
     }
 
     // Save user in database
@@ -99,7 +96,8 @@ const AuthProvider = ({ children }) => {
             // if (currentUser) {
             //     saveUser(currentUser);
             // }
-            const userInfo = { email: currentUser.email }
+
+            const userInfo = { email: currentUser?.email }
             if (currentUser) {
                 axisPublic.post('/jwt', userInfo)
                     .then(res => {

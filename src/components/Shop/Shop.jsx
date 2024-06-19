@@ -19,7 +19,7 @@ const Shop = () => {
   const [cartData, refetch] = useCart();
   const numberOfPages = Math.ceil(count / itemsPerPage);
   const pages = [...Array(numberOfPages).keys()];
-
+  console.log(user);
   useEffect(() => {
     axios
       .get(
