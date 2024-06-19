@@ -1,16 +1,22 @@
 import { useEffect, useRef, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./shop.css";
 import { FaEye } from "react-icons/fa";
 import { Helmet } from "react-helmet";
+import useAuth from "../Hooks/useAuth";
+import Swal from "sweetalert2";
+import useAxiosSecure from "../Hooks/useAxiosSecure ";
+import useCart from "../Hooks/useCart";
 const Shop = () => {
   const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(10);
-
+  const axiosSecure = useAxiosSecure();
+  const { user } = useAuth()
   const { count } = useLoaderData();
-
+  const navigate = useNavigate();
+  const [cartData, refetch] = useCart();
   const numberOfPages = Math.ceil(count / itemsPerPage);
   const pages = [...Array(numberOfPages).keys()];
 
@@ -60,6 +66,55 @@ const Shop = () => {
       setCurrentPage(currentPage + 1);
     }
   };
+
+  const handleCartAddition = cartItem => {
+    if (user && user?.email) {
+      console.log("Add stuff to the database");
+      const { image_url, name, category, description, price, vendor, stock, _id } = cartItem;
+      const newCartItem = {
+        ShopId: _id,
+        image_url: image_url,
+        name: name,
+        email: user?.email,
+        category: category,
+        price: price,
+        company: vendor,
+        stock: stock,
+        description: description
+      }
+      console.log(newCartItem);
+      axiosSecure.post('/cartInformation', newCartItem)
+        .then(res => {
+          if (res.data.insertedId) {
+            refetch();
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Your Medicine has been added to the cart",
+              showConfirmButton: false,
+              timer: 1500
+            });
+          }
+        })
+
+    }
+    else {
+      Swal.fire({
+        title: "Please log in for this functionality!",
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: "Login",
+
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          navigate('/login');
+        } else if (result.isDenied) {
+          Swal.fire("Please log in for using this ", "", "feature");
+        }
+      });
+    }
+  }
 
   return (
     <div>
@@ -139,7 +194,7 @@ const Shop = () => {
                 <td>{product.stock}</td>
                 <td>{product.vendor}</td>
                 <td>
-                  <button className="btn">Select</button>
+                  <button onClick={() => handleCartAddition(product)} className="btn">Select</button>
                 </td>
                 <th>
                   <button className="btn text-xl" onClick={() => handleViewClick(product)}>

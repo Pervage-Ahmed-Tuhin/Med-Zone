@@ -24,6 +24,7 @@ import {
 } from '@tanstack/react-query'
 import Shop from './components/Shop/Shop.jsx';
 import UniqueCategoryHolder from './components/UniqueCategoryHolder/UniqueCategoryHolder.jsx';
+import Cart from './components/Cart/Cart.jsx';
 
 const queryClient = new QueryClient()
 
@@ -51,13 +52,17 @@ const router = createBrowserRouter([
         element: <PrivateRoute><UpdateUser></UpdateUser></PrivateRoute>
       },
       {
-        path:'/shop',
-        element:<Shop></Shop>,
-        loader:()=>fetch('http://localhost:5000/productCount')
+        path: '/shop',
+        element: <Shop></Shop>,
+        loader: () => fetch('http://localhost:5000/productCount')
       },
       {
-        path:'/UniqueCategory/:category',
-        element:<PrivateRoute><UniqueCategoryHolder></UniqueCategoryHolder></PrivateRoute>
+        path: '/UniqueCategory/:category',
+        element: <PrivateRoute><UniqueCategoryHolder></UniqueCategoryHolder></PrivateRoute>
+      },
+      {
+        path: '/cart',
+        element: <PrivateRoute><Cart></Cart></PrivateRoute>
       }
     ]
   },

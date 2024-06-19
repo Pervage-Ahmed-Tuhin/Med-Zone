@@ -1,17 +1,23 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { FaEye } from "react-icons/fa";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Spinner from "../Spinner/Spinner";
 import { useState, useRef, useEffect } from "react";
+import Swal from "sweetalert2";
+import useAuth from "../Hooks/useAuth";
+import useAxiosSecure from "../Hooks/useAxiosSecure ";
+import useCart from "../Hooks/useCart";
 
 const UniqueCategoryHolder = () => {
   const { category } = useParams();
   console.log(category);
-
+  const axiosSecure = useAxiosSecure();
+  const { user } = useAuth()
   const [selectedProduct, setSelectedProduct] = useState(null);
   const modalRef = useRef(null);
-
+  const navigate = useNavigate();
+  const [cartData, refetch] = useCart();
   const {
     data: SoloCategoryData = [],
     isLoading,
@@ -53,6 +59,55 @@ const UniqueCategoryHolder = () => {
       modalRef.current.close();
     }
   };
+
+  const handleCartAddition = cartItem => {
+    if (user && user?.email) {
+      console.log("Add stuff to the database");
+      const { image_url, name, category, description, price, vendor, stock, _id } = cartItem;
+      const newCartItem = {
+        ShopId: _id,
+        image_url: image_url,
+        name: name,
+        email: user?.email,
+        category: category,
+        price: price,
+        company: vendor,
+        stock: stock,
+        description: description
+      }
+      console.log(newCartItem);
+      axiosSecure.post('/cartInformation', newCartItem)
+        .then(res => {
+          if (res.data.insertedId) {
+            refetch();
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Your Medicine has been added to the cart",
+              showConfirmButton: false,
+              timer: 1500
+            });
+          }
+        })
+
+    }
+    else {
+      Swal.fire({
+        title: "Please log in for this functionality!",
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: "Login",
+
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          navigate('/login');
+        } else if (result.isDenied) {
+          Swal.fire("Please log in for using this ", "", "feature");
+        }
+      });
+    }
+  }
 
   console.log(SoloCategoryData);
 
@@ -98,7 +153,7 @@ const UniqueCategoryHolder = () => {
                 <td>{product.stock}</td>
                 <td>{product.vendor}</td>
                 <td>
-                  <button className="btn">Select</button>
+                  <button onClick={() => handleCartAddition(product)} className="btn">Select</button>
                 </td>
                 <td>
                   <button className="btn text-xl" onClick={() => handleViewClick(product)}>

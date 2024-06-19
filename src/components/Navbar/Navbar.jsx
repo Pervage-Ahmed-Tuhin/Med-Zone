@@ -1,11 +1,13 @@
 import { NavLink } from "react-router-dom";
 import { FiShoppingCart } from "react-icons/fi";
 import useAuth from "../Hooks/useAuth";
+import useCart from "../Hooks/useCart";
 const Navbar = () => {
 
 
     const { user, LogOutUser } = useAuth();
 
+    const [cartData] = useCart();
     console.log(user);
 
     const handleLogout = () => {
@@ -22,7 +24,7 @@ const Navbar = () => {
     const links = <>
         <li className="list-none"><NavLink to='/'>Home</NavLink></li>
         <li className="list-none"><NavLink to='/shop'>Shop</NavLink></li>
-        <li className="list-none text-xl"><NavLink to='/cart'><FiShoppingCart /></NavLink></li>
+        <li className="list-none text-xl"><NavLink to='/cart'><FiShoppingCart /> <span className="text-sm">+{cartData.length}</span></NavLink></li>
         <select name="" id="">
             <option value="English">English</option>
             <option value="Bangla">Bangla</option>
@@ -68,7 +70,7 @@ const Navbar = () => {
 
                 </> : <>
                     <div className="navbar-end">
-                       <button className="btn"> <NavLink to='/login'>join us</NavLink></button>
+                        <button className="btn"> <NavLink to='/login'>join us</NavLink></button>
                     </div>
 
                 </>

@@ -19,7 +19,7 @@ export const AuthContext = createContext(null);
 
 
 const AuthProvider = ({ children }) => {
-
+    const [length, setLength] = useState(0);
     const [user, setUser] = useState(null);
     const [loader, setLoader] = useState(true);
     const [infoHolder, setInfoHolder] = useState({});
@@ -131,7 +131,8 @@ const AuthProvider = ({ children }) => {
         infoHolder,
         loader,
         setUser,
-        saveUser
+        saveUser,
+        length, setLength
     }
 
     return (
