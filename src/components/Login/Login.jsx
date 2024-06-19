@@ -14,7 +14,7 @@ const Login = () => {
     const location = useLocation();
     const from = location?.state || "/";
     const navigate = useNavigate();
-    const { loginUser, GoogleLogin, GitHUbLogin, setInfoHolder } = useAuth();
+    const { loginUser, GoogleLogin, GitHUbLogin, setInfoHolder, saveUser } = useAuth();
 
     useEffect(() => {
         const delay = setTimeout(() => {
@@ -49,9 +49,13 @@ const Login = () => {
             .then(result => {
                 // console.log(result.user);
                 // setInfoHolder(result.user);
-
+                const MainUser = result.user;
+                const email = MainUser.email;
+                console.log(email);
+                console.log(result.user.email);
                 setInfoHolder({ name: result.user.displayName, email: result.user.email, photoURL: result.user.photoURL });
                 toast(`Welcome! ${result.user.displayName}`);
+                saveUser(MainUser);
                 setTimeout(() => {
                     navigate(from);
                 }, 1000)
@@ -68,9 +72,12 @@ const Login = () => {
 
                 // console.log(result.user);
                 // setInfoHolder(result.user);
-
+                const MainUser = result.user;
+                const email = MainUser.email;
+                console.log(email);
                 setInfoHolder({ name: result.user.displayName, email: result.user.email, photoURL: result.user.photoURL });
                 toast(`Welcome! ${result.user.displayName}`);
+                saveUser(MainUser);
                 setTimeout(() => {
                     navigate(from);
                 }, 1000)

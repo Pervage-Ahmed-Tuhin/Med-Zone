@@ -15,6 +15,7 @@ import useAuth from "../Hooks/useAuth";
 import axios from "axios";
 
 const Register = () => {
+    const {saveUser}=useAuth();
     const [Type, setType] = useState(false);
     useEffect(() => {
         document.title = "Med-Zone|Register";
@@ -35,8 +36,9 @@ const Register = () => {
 
     const onSubmit = async (data) => {
         setLoading(true);
-        const { email, password, name, photo } = data;
+        const { email, password, name, photo, role } = data;
         console.log(photo);
+        console.log(role);
 
         const formData = new FormData();
         formData.append('image', photo[0]); // Assuming `photo` is a FileList, get the first file
@@ -77,6 +79,7 @@ const Register = () => {
 
             await UpdateUserProfile(name, photoURL);
             setInfoHolder(data);
+            await saveUser({ email }, role);
             setLoading(false);
             navigate('/');
 
@@ -125,6 +128,12 @@ const Register = () => {
 
                         </span>
                     </div>
+                    <span className="text-red-900 text-xl mt-6">Select your role</span>
+                    <select className="select select-bordered w-full max-w-xs mt-8" {...register("role", { required: true })}>
+                        <option>user</option>
+                        <option>seller</option>
+
+                    </select>
                     <span className="text-red-900 text-xl mt-6">Upload your photo</span>
                     <input name="photo" type="file" className="file-input file-input-bordered file-input-warning w-full max-w-xs mt-9 border-none outline-none" {...register("photo")} />
                     <a href="#" className=" text-red-900 md:text-white mt-8 text-2xl font-bold">Have an account? <br /> <Link to='/login' className="text-red-900 underline">Log In</Link></a>

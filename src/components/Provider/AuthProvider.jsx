@@ -61,10 +61,23 @@ const AuthProvider = ({ children }) => {
     // Save user in database
 
     // Save user in database
-    const saveUser = async (user) => {
+    // const saveUser = async (user) => {
+    //     const currentUser = {
+    //         email: user?.email,
+    //         role: user.role || "user",
+    //         status: 'verified',
+    //     };
+    //     try {
+    //         const { data } = await axios.put('http://localhost:5000/user', currentUser);
+    //         return data;
+    //     } catch (error) {
+    //         console.error('Error saving user to the database:', error);
+    //     }
+    // };
+    const saveUser = async (user, role = "user") => {
         const currentUser = {
             email: user?.email,
-            role: 'guest',
+            role: role,
             status: 'verified',
         };
         try {
@@ -83,9 +96,9 @@ const AuthProvider = ({ children }) => {
         const Unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
             setInfoHolder(currentUser);
-            if (currentUser) {
-                saveUser(currentUser);
-            }
+            // if (currentUser) {
+            //     saveUser(currentUser);
+            // }
             const userInfo = { email: currentUser.email }
             if (currentUser) {
                 axisPublic.post('/jwt', userInfo)
@@ -117,7 +130,8 @@ const AuthProvider = ({ children }) => {
         GitHUbLogin,
         infoHolder,
         loader,
-        setUser
+        setUser,
+        saveUser
     }
 
     return (
