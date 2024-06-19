@@ -10,6 +10,7 @@ const GoogleProvider = new GoogleAuthProvider();
 import { GithubAuthProvider } from "firebase/auth";
 import auth from "../../Firebase/firebase.config";
 import axios from "axios";
+import useAxiosPublic from "../Hooks/useAxiosPublic ";
 
 const GithubProvider = new GithubAuthProvider();
 
@@ -22,6 +23,7 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loader, setLoader] = useState(true);
     const [infoHolder, setInfoHolder] = useState({});
+    const axisPublic = useAxiosPublic();
     const createUser = (email, password) => {
         setLoader(true);
         return createUserWithEmailAndPassword(auth, email, password);
@@ -84,13 +86,25 @@ const AuthProvider = ({ children }) => {
             if (currentUser) {
                 saveUser(currentUser);
             }
+            const userInfo = { email: currentUser.email }
+            if (currentUser) {
+                axisPublic.post('/jwt', userInfo)
+                    .then(res => {
+                        if (res.data.token) {
+
+                            localStorage.setItem('access-token', res.data.token);
+                        }
+                    })
+            } else {
+                localStorage.removeItem('access-token');
+            }
             setLoader(false);
 
         });
         return () => {
             Unsubscribe();
         }
-    }, [])
+    }, [axisPublic])
 
     const info = {
         user,
