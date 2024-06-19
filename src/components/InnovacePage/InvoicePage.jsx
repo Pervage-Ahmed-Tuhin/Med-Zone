@@ -30,6 +30,11 @@ const InvoicePage = () => {
         content: () => componentRef.current,
         documentTitle: 'Invoice',
     });
+    const totalCost = data.reduce((total, booking) => {
+        return total + booking.cartData.reduce((sum, product) => {
+            return sum + (product.price * product.quantity);
+        }, 0);
+    }, 0).toFixed(2);
 
     return (
         <div>
@@ -48,6 +53,7 @@ const InvoicePage = () => {
                     <div className="text-center mb-4">
                         <h1 className="text-2xl font-bold">Med-Zone</h1>
                         <h2 className="text-2xl font-bold">Invoice</h2>
+                        <h2 className="text-2xl font-bold">Total Cost: {totalCost}$</h2>
                         <p>Date: {new Date().toLocaleDateString()}</p>
                         <p>Name: {user?.displayName}</p>
                         <p>Email: {user?.email}</p>

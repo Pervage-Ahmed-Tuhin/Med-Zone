@@ -16,11 +16,12 @@ const CheckoutForm = ({ grandTotal }) => {
     const elements = useElements()
     const axiosSecure = useAxiosSecure()
     const navigate = useNavigate()
-    const { user } = useAuth()
+    const { user, setTotal } = useAuth()
     const [clientSecret, setClientSecret] = useState()
     const [cardError, setCardError] = useState('')
     const [processing, setProcessing] = useState(false)
     const [cartData, refetch] = useCart();
+    setTotal(grandTotal);
     useEffect(() => {
         // fetch client secret
         if (grandTotal > 1) {

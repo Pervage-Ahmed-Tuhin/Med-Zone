@@ -25,12 +25,13 @@ const AuthProvider = ({ children }) => {
     const [loader, setLoader] = useState(true);
     const [infoHolder, setInfoHolder] = useState({});
     const axisPublic = useAxiosPublic();
+    const [total, setTotal] = useState(null);
     const createUser = (email, password) => {
         setLoader(true);
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
-   
+
 
 
     const LogOutUser = () => {
@@ -52,7 +53,7 @@ const AuthProvider = ({ children }) => {
         return updateProfile(auth.currentUser, {
             displayName: name, photoURL: photoURL
         })
-           
+
     }
 
     // Save user in database
@@ -130,7 +131,7 @@ const AuthProvider = ({ children }) => {
         loader,
         setUser,
         saveUser,
-        length, setLength
+        length, setLength, setTotal, total
     }
 
     return (
