@@ -70,7 +70,8 @@ const Shop = () => {
   const handleCartAddition = cartItem => {
     if (user && user?.email) {
       console.log("Add stuff to the database");
-      const { image_url, name, category, description, price, vendor, stock, _id } = cartItem;
+      console.log(cartItem);
+      const { image_url, name, category, description, price, vendor, stock, _id, sellerEmail } = cartItem;
       const newCartItem = {
         ShopId: _id,
         image_url: image_url,
@@ -80,7 +81,8 @@ const Shop = () => {
         price: price,
         company: vendor,
         stock: stock,
-        description: description
+        description: description,
+        sellerEmail: sellerEmail
       }
       console.log(newCartItem);
       axiosSecure.post('/cartInformation', newCartItem)

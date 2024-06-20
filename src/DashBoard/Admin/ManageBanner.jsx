@@ -142,8 +142,8 @@ const ManageBanner = () => {
             Swal.fire({
                 icon: "error",
                 title: "Oops...",
-                text: "Something went wrong!",
-                footer: "Please try again later"
+                text: "This is already available in the banner",
+                footer: "you can remove it or just close the modal"
             });
         }
     };

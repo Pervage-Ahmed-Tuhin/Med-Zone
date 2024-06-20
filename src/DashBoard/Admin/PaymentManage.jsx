@@ -70,9 +70,9 @@ const PaymentManage = () => {
     if (error) return <div>Error loading data</div>;
 
     return (
-        <div>
-            <table className="table text-xl w-full">
-                <thead>
+        <div className="">
+            <table className="table text-xl w-full overflow-x-auto">
+                <thead >
                     <tr>
                         <th>Buyer Name</th>
                         <th>Buyer Email</th>
@@ -80,7 +80,7 @@ const PaymentManage = () => {
                         <th>Transaction ID</th>
                         <th>Status</th>
                         <th>Date</th>
-                       
+
                     </tr>
                 </thead>
                 <tbody>

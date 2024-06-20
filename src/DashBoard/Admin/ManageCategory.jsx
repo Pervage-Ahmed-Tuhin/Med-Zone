@@ -162,11 +162,11 @@ const ManageCategory = () => {
                                         </div>
                                     </div>
                                 </td>
-                                <td>
+                                <td className="space-y-3">
                                     <button className="btn" onClick={() => handleDelete(category._id)}>
                                         Delete
                                     </button>
-                                    <button className="btn ml-2" onClick={() => document.getElementById(`update_modal_${category._id}`).showModal()}>
+                                    <button className="btn md:ml-2 sm:mt-4 mt-0" onClick={() => document.getElementById(`update_modal_${category._id}`).showModal()}>
                                         Update
                                     </button>
                                     <dialog id={`update_modal_${category._id}`} className="modal">

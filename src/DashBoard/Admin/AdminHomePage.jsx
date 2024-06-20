@@ -70,7 +70,7 @@ const AdminHomePage = () => {
 
     return (
         <div>
-            <div className="card bg-base-100 shadow-xl mt-9 mb-9 m-auto z-0">
+            <div className="card w-96 bg-base-100 shadow-xl mt-9 mb-9 m-auto z-0">
                 <figure><img className="rounded-lg" src={user?.photoURL} alt="User" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">Welcome {user?.displayName}</h2>
