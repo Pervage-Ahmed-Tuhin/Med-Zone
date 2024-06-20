@@ -1,0 +1,17 @@
+/* DashBoardLayout.css */
+.dashboard-layout {
+    display: flex;
+}
+
+.content {
+    margin-left: 250px;
+    /* same width as sidebar */
+    padding: 20px;
+    flex-grow: 1;
+}
+
+@media (max-width: 768px) {
+    .content {
+        margin-left: 0;
+    }
+}

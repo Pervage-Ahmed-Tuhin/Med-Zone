@@ -73,7 +73,7 @@ const Navbar = () => {
                                     Update profile
                                 </NavLink>
                             </li>
-                            <li><a>DashBoard</a></li>
+                            <li><NavLink to='/dashboard'>Dashboard</NavLink></li>
                             <li onClick={handleLogout}><a>Logout</a></li>
                         </ul>
                     </div>

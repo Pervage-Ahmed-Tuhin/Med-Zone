@@ -27,6 +27,14 @@ import UniqueCategoryHolder from './components/UniqueCategoryHolder/UniqueCatego
 import Cart from './components/Cart/Cart.jsx';
 import CheckOutPage from './components/CheckOutPage/CheckOutPage.jsx';
 import InvoicePage from './components/InnovacePage/InvoicePage.jsx';
+import DashBoardLayout from './DashBoard/layout/DashBoardLayout.jsx';
+import AdminHomePage from './DashBoard/Admin/AdminHomePage.jsx';
+import AdminRoute from './components/Hooks/AdminRoute .jsx';
+import ManageUsers from './DashBoard/Admin/ManageUsers.jsx';
+import ManageCategory from './DashBoard/Admin/ManageCategory.jsx';
+import PaymentManage from './DashBoard/Admin/PaymentManage.jsx';
+import SalesReport from './DashBoard/Admin/SalesReport.jsx';
+import ManageBanner from './DashBoard/Admin/ManageBanner.jsx';
 
 
 const queryClient = new QueryClient()
@@ -77,6 +85,36 @@ const router = createBrowserRouter([
       }
     ]
   },
+  {
+    path: '/dashboard',
+    element: <PrivateRoute><DashBoardLayout></DashBoardLayout></PrivateRoute>,
+    children: [
+      {
+        index: true,
+        element: <PrivateRoute><AdminRoute><AdminHomePage></AdminHomePage></AdminRoute></PrivateRoute>
+      },
+      {
+        path: 'manage-users',
+        element: <PrivateRoute><AdminRoute><ManageUsers></ManageUsers></AdminRoute></PrivateRoute>
+      },
+      {
+        path: 'manage-category',
+        element: <PrivateRoute><AdminRoute><ManageCategory></ManageCategory></AdminRoute></PrivateRoute>
+      },
+      {
+        path: 'payment-manage',
+        element: <PrivateRoute><AdminRoute><PaymentManage></PaymentManage></AdminRoute></PrivateRoute>
+      },
+      {
+        path: 'sales-report',
+        element: <PrivateRoute><AdminRoute><SalesReport></SalesReport></AdminRoute></PrivateRoute>
+      },
+      {
+        path: 'manage-banner',
+        element: <PrivateRoute><AdminRoute><ManageBanner></ManageBanner></AdminRoute></PrivateRoute>
+      }
+    ]
+  }
 ]);
 
 
