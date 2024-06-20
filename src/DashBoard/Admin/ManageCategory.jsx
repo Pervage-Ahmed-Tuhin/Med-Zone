@@ -3,6 +3,7 @@ import Swal from "sweetalert2";
 
 import Spinner from "../../components/Spinner/Spinner";
 import useAxiosSecure from "../../components/Hooks/useAxiosSecure ";
+import { Helmet } from "react-helmet";
 
 const ManageCategory = () => {
     const axiosSecure = useAxiosSecure();
@@ -134,6 +135,9 @@ const ManageCategory = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Multi-Vendor || ManageCategory</title>
+            </Helmet>
             <h1 className="text-center text-xl font-bold mt-5 mb-6">Manage Categories</h1>
             <div className="overflow-x-auto">
                 <table className="table">

@@ -4,6 +4,7 @@ import Spinner from "../../components/Spinner/Spinner";
 import useAxiosSecure from "../../components/Hooks/useAxiosSecure ";
 import Swal from "sweetalert2";
 import useAuth from "../../components/Hooks/useAuth";
+import { Helmet } from "react-helmet";
 
 
 
@@ -74,6 +75,9 @@ const ManageUsers = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Multi-Vendor || ManageUsers</title>
+            </Helmet>
             <h1 className="text-center text-xl font-bold mt-5 mb-6">Manage Users</h1>
             <div className="flex justify-center">
                 <div className="overflow-x-auto">

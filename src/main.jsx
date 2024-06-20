@@ -48,7 +48,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch('http://localhost:5000/medicine')
+        loader: () => fetch('http://localhost:5000/bannerData')
       },
       {
         path: '/register',
@@ -111,7 +111,8 @@ const router = createBrowserRouter([
       },
       {
         path: 'manage-banner',
-        element: <PrivateRoute><AdminRoute><ManageBanner></ManageBanner></AdminRoute></PrivateRoute>
+        element: <PrivateRoute><AdminRoute><ManageBanner></ManageBanner></AdminRoute></PrivateRoute>,
+        loader: () => fetch('http://localhost:5000/productCount')
       }
     ]
   }
