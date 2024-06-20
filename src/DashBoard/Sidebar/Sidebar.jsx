@@ -14,7 +14,7 @@ const Sidebar = () => {
     console.log(role);
 
     return (
-        <div>
+        <div className='z-[10000]'>
             <button className="toggle-button" onClick={toggleSidebar}>
                 ☰
             </button>
