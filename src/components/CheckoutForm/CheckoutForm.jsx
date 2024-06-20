@@ -109,7 +109,8 @@ const CheckoutForm = ({ grandTotal }) => {
                 cartData: cartData, // include cartData
                 email: user?.email, // additional information
                 userName: user?.displayName, // additional information
-                totalAmount: grandTotal // additional information
+                totalAmount: grandTotal,
+                paymentStatus: 'pending' // additional information
             }
 
             console.log(paymentInfo)

@@ -150,7 +150,7 @@ const ManageBanner = () => {
     return (
         <div>
             <Helmet>
-                <title>Multi-Vendor Shop</title>
+                <title>Multi-Vendor||Manage Banner</title>
             </Helmet>
             <div className="mt-20 mb-9">
                 <p className="text-xl text-center">Current Page : {currentPage}</p>
