@@ -35,6 +35,7 @@ import ManageCategory from './DashBoard/Admin/ManageCategory.jsx';
 import PaymentManage from './DashBoard/Admin/PaymentManage.jsx';
 import SalesReport from './DashBoard/Admin/SalesReport.jsx';
 import ManageBanner from './DashBoard/Admin/ManageBanner.jsx';
+import PaymentHistory from './DashBoard/user/PaymentHistory.jsx';
 
 
 const queryClient = new QueryClient()
@@ -113,6 +114,10 @@ const router = createBrowserRouter([
         path: 'manage-banner',
         element: <PrivateRoute><AdminRoute><ManageBanner></ManageBanner></AdminRoute></PrivateRoute>,
         loader: () => fetch('http://localhost:5000/productCount')
+      },
+      {
+        path: 'payment-history',
+        element: <PrivateRoute><PaymentHistory></PaymentHistory></PrivateRoute>
       }
     ]
   }

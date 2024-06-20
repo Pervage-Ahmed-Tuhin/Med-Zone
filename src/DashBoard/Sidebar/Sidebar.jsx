@@ -85,7 +85,7 @@ const Sidebar = () => {
                 {role === 'user' ? <div>
                     <ul>
                         <li>
-                            <NavLink to="/dashboard" exact end activeClassName="active">
+                            <NavLink to="payment-history" exact end activeClassName="active">
                                 PaymentHistory
                             </NavLink>
                         </li>
