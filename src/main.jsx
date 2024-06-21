@@ -41,6 +41,7 @@ import ManageMedicine from './DashBoard/Seller/ManageMedicine.jsx';
 import SellerPaymentHistory from './DashBoard/Seller/SellerPaymentHistory.jsx';
 import SellerAdvertisement from './DashBoard/Seller/SellerAdvertisement.jsx';
 import SellerHome from './DashBoard/Seller/SellerHome.jsx';
+import TestShop from './components/TestShop/TestShop.jsx';
 
 
 const queryClient = new QueryClient()
@@ -54,7 +55,8 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch('http://localhost:5000/bannerData')
+        loader: () => fetch('https://multi-vendor-server-eight.vercel.app/bannerData')
+
       },
       {
         path: '/register',
@@ -71,7 +73,12 @@ const router = createBrowserRouter([
       {
         path: '/shop',
         element: <Shop></Shop>,
-        loader: () => fetch('http://localhost:5000/productCount')
+        loader: () => fetch('https://multi-vendor-server-eight.vercel.app/productCount')
+      },
+      {
+        path: '/testShop',
+        element: <TestShop></TestShop>,
+        loader: () => fetch('https://multi-vendor-server-eight.vercel.app/productCount')
       },
       {
         path: '/UniqueCategory/:category',
@@ -118,7 +125,7 @@ const router = createBrowserRouter([
       {
         path: 'manage-banner',
         element: <PrivateRoute><AdminRoute><ManageBanner></ManageBanner></AdminRoute></PrivateRoute>,
-        loader: () => fetch('http://localhost:5000/productCount')
+        loader: () => fetch('https://multi-vendor-server-eight.vercel.app/productCount')
       },
       {
         path: 'payment-history',

@@ -4,13 +4,13 @@ import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 import { Pagination } from 'swiper/modules';
 import { useEffect, useState } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 
 const DiscountBanner = () => {
     const [data, setData] = useState([]);
     const navigate = useNavigate();
     useEffect(() => {
-        fetch('http://localhost:5000/discounted')
+        fetch('https://multi-vendor-server-eight.vercel.app/discounted')
             .then(res => res.json())
             .then(data => setData(data))
             .catch(error => console.error('Error fetching discounted products:', error));

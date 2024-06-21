@@ -26,7 +26,7 @@ const UniqueCategoryHolder = () => {
     queryKey: ["unique", category],
     queryFn: async () => {
       try {
-        const { data } = await axios.get(`http://localhost:5000/UniqueCategory/${category}`);
+        const { data } = await axios.get(`https://multi-vendor-server-eight.vercel.app/UniqueCategory/${category}`);
         return data;
       } catch (error) {
         console.error("Error fetching category data:", error);

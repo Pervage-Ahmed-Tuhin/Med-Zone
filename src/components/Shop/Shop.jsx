@@ -23,7 +23,7 @@ const Shop = () => {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:5000/allMedicines?page=${currentPage}&size=${itemsPerPage}`
+        `https://multi-vendor-server-eight.vercel.app/allMedicines?page=${currentPage}&size=${itemsPerPage}`
       )
       .then((res) => setProducts(res.data))
       .catch((error) => console.error("Error fetching products:", error));

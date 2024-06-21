@@ -79,7 +79,7 @@ const AuthProvider = ({ children }) => {
             status: 'verified',
         };
         try {
-            const { data } = await axios.put('http://localhost:5000/user', currentUser);
+            const { data } = await axios.put('https://multi-vendor-server-eight.vercel.app/user', currentUser);
             return data;
         } catch (error) {
             console.error('Error saving user to the database:', error);

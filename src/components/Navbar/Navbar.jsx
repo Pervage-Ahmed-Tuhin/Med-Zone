@@ -35,7 +35,8 @@ const Navbar = () => {
 
     const links = <>
         <li className="list-none  text-[#fe7a36]"><NavLink to='/'>Home</NavLink></li>
-        <li className="list-none  text-[#fe7a36]"><NavLink to='/shop'>Shop</NavLink></li>
+        {/* <li className="list-none  text-[#fe7a36]"><NavLink to='/shop'>Shop</NavLink></li> */}
+        <li className="list-none  text-[#fe7a36]"><NavLink to='/testShop'>Shop</NavLink></li>
         <li className="list-none  text-[#fe7a36]"><NavLink to='/cart'><FiShoppingCart /> <span className="text-sm">+{cartData.length}</span></NavLink></li>
 
     </>
@@ -92,7 +93,10 @@ const Navbar = () => {
 
                 </> : <>
                     <div className="navbar-end">
-                        <button className="btn text-[#fe7a36]"> <NavLink to='/login'>join us</NavLink></button>
+                        <NavLink to='/login'>
+                            <button className="btn text-[#fe7a36]"> Join us</button>
+                        </NavLink>
+
                     </div>
 
                 </>

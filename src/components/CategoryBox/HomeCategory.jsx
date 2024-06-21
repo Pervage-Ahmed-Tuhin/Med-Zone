@@ -1,4 +1,4 @@
-import service from "./../../../public/Career Counseling-01.jpg";
+
 import { GiPill } from "react-icons/gi";
 import { useNavigate } from "react-router-dom";
 
@@ -17,7 +17,7 @@ const HomeCategory = () => {
     queryKey: ["category"],
     queryFn: async () => {
       try {
-        const { data } = await axios.get("http://localhost:5000/category");
+        const { data } = await axios.get("https://multi-vendor-server-eight.vercel.app/category");
         return data;
       } catch (error) {
         console.error("Error fetching category data:", error);
