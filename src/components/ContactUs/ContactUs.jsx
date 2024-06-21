@@ -26,7 +26,7 @@ const ContactUs = () => {
     return (
         <div ref={containerRef} className="max-w-[1170px] mx-auto py-8">
 
-            <h1 className="text-3xl font-play-fare font-bold text-center mt-9">
+            <h1 className="text-3xl font-play-fare font-bold text-center mt-9 text-[#fe7a36]">
 
                 Contact Us
 

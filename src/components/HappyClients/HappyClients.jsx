@@ -5,17 +5,17 @@ const HappyClients = () => {
     return (
         <div className="max-w-6xl mx-auto mt-9">
 
-            <h1 className="text-3xl font-play-fare font-bold text-center mt-9">
+            <h1 className="text-3xl font-play-fare font-bold text-center mt-9 text-[#fe7a36]">
 
                 Our Happy Clients
 
             </h1>
             <div className="divider"></div>
-            <p className="text-xl font-play-fare text-gray-400 text-center mt-4 mb-5"> Here are some of our client Review Hope you will Choose Us Feel <br /> Free to Share our website with your family</p>
+            <p className="text-xl font-play-fare text-gray-400 text-center mt-4 mb-5 "> Here are some of our client Review Hope you will Choose Us Feel <br /> Free to Share our website with your family</p>
 
             <section className="my-8">
                 <div className="container mx-auto flex flex-col items-center pb-6 mb-4 md:p-10 md:px-12">
-                    <h1 className="text-4xl font-semibold leading-none text-center">What our customers are saying about us</h1>
+                    <h1 className="text-4xl font-semibold leading-none text-center text-[#fe7a36]">What our customers are saying about us</h1>
                 </div>
                 <div className="container mx-auto grid grid-cols-1 gap-8 lg:gap-20 md:px-10 md:pb-10 lg:grid-cols-2">
                     <div className="flex flex-col items-center mx-12 lg:mx-0">

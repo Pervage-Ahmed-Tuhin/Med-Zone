@@ -20,7 +20,7 @@ const DiscountBanner = () => {
     return (
         <div className="text-center mt-7 mb-10">
 
-            <h1 className="text-3xl font-play-fare font-bold text-center mt-9">
+            <h1 className="text-3xl font-play-fare font-bold text-center mt-9 text-[#fe7a36]">
 
                 Discounted Products
 

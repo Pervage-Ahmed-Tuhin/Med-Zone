@@ -39,7 +39,7 @@ const HomeCategory = () => {
     <div>
       <div className="my-20">
 
-        <h1 className="text-3xl font-play-fare font-bold text-center mt-9">
+        <h1 className="text-3xl font-play-fare font-bold text-center mt-9 text-[#fe7a36]">
 
           Medicine Category
 
@@ -65,10 +65,10 @@ const HomeCategory = () => {
                     src={soloCategory.image_url}
                     alt=""
                   />
-                  <h1 className="fixed text-white font-bold text-xl md:text-2xl">
+                  <h1 className="fixed text-[#fe7a36] font-bold text-xl md:text-2xl">
                     {soloCategory.category}
                   </h1>
-                  <button className="btn btn-outline text-white lg:hidden fixed bottom-6">
+                  <button className="btn btn-outline text-[#fe7a36] lg:hidden fixed bottom-6">
                     Read More
                   </button>
                 </div>
