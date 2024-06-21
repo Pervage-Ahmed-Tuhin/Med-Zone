@@ -76,6 +76,11 @@ const Sidebar = () => {
                                 AskForAdvertiseMent
                             </NavLink>
                         </li>
+                        <li>
+                            <NavLink to="payment-history" exact end activeClassName="active">
+                                {role === 'seller' ? 'sellerPurchaseHistory' : <></>}
+                            </NavLink>
+                        </li>
 
                     </ul>
 
