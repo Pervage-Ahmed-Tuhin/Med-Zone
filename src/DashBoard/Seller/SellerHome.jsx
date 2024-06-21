@@ -4,6 +4,7 @@ import useAxiosSecure from "../../components/Hooks/useAxiosSecure ";
 import Spinner from "../../components/Spinner/Spinner";
 import RevenueChart from "./RevenueChart ";
 import useRole from "../../components/Hooks/useRole";
+import { Helmet } from "react-helmet";
 
 
 const SellerHome = () => {
@@ -30,6 +31,9 @@ const SellerHome = () => {
     }
     return (
         <div className="container mx-auto p-4">
+            <Helmet>
+                <title>Multi-Vendor||SellerHome</title>
+            </Helmet>
             <h1 className="text-2xl font-bold mb-4 text-center">Seller Home Page</h1>
             <div className="card w-96 bg-base-100 shadow-xl mt-9 mb-9 m-auto z-0">
                 <figure><img className="rounded-lg" src={user?.photoURL} alt="User" /></figure>

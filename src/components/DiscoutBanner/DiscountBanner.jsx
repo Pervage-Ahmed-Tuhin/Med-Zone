@@ -19,7 +19,15 @@ const DiscountBanner = () => {
     console.log(data);
     return (
         <div className="text-center mt-7 mb-10">
-            <h1 className="text-3xl font-bold mb-5">Discounted Products</h1>
+
+            <h1 className="text-3xl font-play-fare font-bold text-center mt-9">
+
+                Discounted Products
+
+            </h1>
+            <div className="divider"></div>
+            <p className="text-xl font-play-fare text-gray-400 text-center mt-4 mb-9"> Here are the discounted products <br /> Free to Share our website with your family</p>
+
             <Swiper
                 slidesPerView={3}
                 spaceBetween={30}

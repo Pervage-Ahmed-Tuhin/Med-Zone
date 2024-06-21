@@ -1,9 +1,10 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { FiShoppingCart } from "react-icons/fi";
 import useAuth from "../Hooks/useAuth";
 import useCart from "../Hooks/useCart";
 import Swal from "sweetalert2";
 import Spinner from "../Spinner/Spinner";
+import { Typewriter } from "react-simple-typewriter";
 const Navbar = () => {
 
 
@@ -33,13 +34,9 @@ const Navbar = () => {
 
 
     const links = <>
-        <li className="list-none"><NavLink to='/'>Home</NavLink></li>
-        <li className="list-none"><NavLink to='/shop'>Shop</NavLink></li>
-        <li className="list-none text-xl"><NavLink to='/cart'><FiShoppingCart /> <span className="text-sm">+{cartData.length}</span></NavLink></li>
-        <select name="" id="">
-            <option value="English">English</option>
-            <option value="Bangla">Bangla</option>
-        </select>
+        <li className="list-none  text-[#fe7a36]"><NavLink to='/'>Home</NavLink></li>
+        <li className="list-none  text-[#fe7a36]"><NavLink to='/shop'>Shop</NavLink></li>
+        <li className="list-none  text-[#fe7a36]"><NavLink to='/cart'><FiShoppingCart /> <span className="text-sm">+{cartData.length}</span></NavLink></li>
 
     </>
     return (
@@ -53,7 +50,20 @@ const Navbar = () => {
                         {links}
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-xl">Med-Zone</a>
+                <Link to='/' className="btn btn-ghost  text-base md:text-3xl text-[#fe7a36] bg-base-200 font-bold mr-3">
+
+
+                    <Typewriter
+                        loop
+                        cursor
+                        cursorStyle='_'
+                        typeSpeed={70}
+                        deleteSpeed={50}
+                        delaySpeed={2000}
+                        words={['Med-Zone']}
+                    />
+
+                </Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
@@ -71,23 +81,23 @@ const Navbar = () => {
                         </div>
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                             <li>
-                                <NavLink to='/updateUser' className="justify-between">
+                                <NavLink to='/updateUser' className="justify-between text-[#fe7a36]">
                                     Update profile
                                 </NavLink>
                             </li>
-                            <li><NavLink to='/dashboard'>Dashboard</NavLink></li>
-                            <li onClick={handleLogout}><a>Logout</a></li>
+                            <li><NavLink to='/dashboard' className='text-[#fe7a36]'>Dashboard</NavLink></li>
+                            <li className="text-[#fe7a36]" onClick={handleLogout}><a>Logout</a></li>
                         </ul>
                     </div>
 
                 </> : <>
                     <div className="navbar-end">
-                        <button className="btn"> <NavLink to='/login'>join us</NavLink></button>
+                        <button className="btn text-[#fe7a36]"> <NavLink to='/login'>join us</NavLink></button>
                     </div>
 
                 </>
             }
-          
+
         </div>
     );
 };

@@ -7,6 +7,7 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'rec
 import useAxiosSecure from "../../components/Hooks/useAxiosSecure ";
 import useAuth from "../../components/Hooks/useAuth";
 import useRole from "../../components/Hooks/useRole";
+import { Helmet } from "react-helmet";
 
 const AdminHomePage = () => {
     const [role] = useRole();
@@ -70,6 +71,9 @@ const AdminHomePage = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Multi-Vendor||adminHome</title>
+            </Helmet>
             <div className="card w-96 bg-base-100 shadow-xl mt-9 mb-9 m-auto z-0">
                 <figure><img className="rounded-lg" src={user?.photoURL} alt="User" /></figure>
                 <div className="card-body">

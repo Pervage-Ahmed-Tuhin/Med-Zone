@@ -1,8 +1,9 @@
 // Sidebar.jsx
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import './sidebar.css';
 import useRole from '../../components/Hooks/useRole';
+import { Typewriter } from 'react-simple-typewriter';
 
 const Sidebar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -19,6 +20,20 @@ const Sidebar = () => {
                 ☰
             </button>
             <div className={`sidebar ${isOpen ? 'open' : ''} flex flex-col justify-between`}>
+                <Link to='/' className="btn btn-ghost  text-base md:text-3xl text-[#fe7a36] bg-base-200 font-bold mr-3">
+
+
+                    <Typewriter
+                        loop
+                        cursor
+                        cursorStyle='_'
+                        typeSpeed={70}
+                        deleteSpeed={50}
+                        delaySpeed={2000}
+                        words={['Med-Zone']}
+                    />
+
+                </Link>
                 {role === 'admin' ? <div className='mt-14'>
                     <ul>
                         <li>

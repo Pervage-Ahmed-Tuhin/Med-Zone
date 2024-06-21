@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../components/Hooks/useAuth";
 import useAxiosSecure from "../../components/Hooks/useAxiosSecure ";
 import Spinner from "../../components/Spinner/Spinner";
+import { Helmet } from "react-helmet";
 
 
 const SellerPaymentHistory = () => {
@@ -28,6 +29,9 @@ const SellerPaymentHistory = () => {
 
     return (
         <div className="container mx-auto p-4">
+            <Helmet>
+                <title>Multi-Vendor||sellerPaymentHistory</title>
+            </Helmet>
             <h1 className="text-2xl font-bold mb-4">Purchase History</h1>
             <table className="table-auto w-full text-xl">
                 <thead>

@@ -1,4 +1,4 @@
-import  { useState, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
 import DataTable from "react-data-table-component";
 import DatePicker from "react-datepicker";
@@ -8,6 +8,7 @@ import { CSVLink } from "react-csv";
 import * as XLSX from "xlsx";
 import useAxiosSecure from "../../components/Hooks/useAxiosSecure ";
 import useAuth from "../../components/Hooks/useAuth";
+import { Helmet } from "react-helmet";
 
 
 const SalesReport = () => {
@@ -20,7 +21,7 @@ const SalesReport = () => {
         data: PaymentData = [],
         isLoading,
         error,
-       
+
     } = useQuery({
         queryKey: ["payment", user?.email],
         enabled: !!user && !!user?.email,
@@ -59,7 +60,7 @@ const SalesReport = () => {
         { name: 'Date', selector: row => new Date(row.date).toLocaleDateString(), sortable: true },
     ];
 
-    
+
     const exportExcel = () => {
         const ws = XLSX.utils.json_to_sheet(filteredData.map(booking => ({
             'Medicine Name': booking.cartData.map(item => item.name).join(", "),
@@ -80,6 +81,9 @@ const SalesReport = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Multi-Vendor||salesReport</title>
+            </Helmet>
             <h1 className="text-center text-2xl font-bold mb-4">Sales Report</h1>
             <div className="flex justify-center mb-4">
                 <DatePicker
@@ -101,7 +105,7 @@ const SalesReport = () => {
                 />
             </div>
             <div className="flex justify-center mb-4">
-              
+
                 <CSVLink data={filteredData} filename={"sales_report.csv"} className="btn mr-2">Export CSV</CSVLink>
                 <button onClick={exportExcel} className="btn">Export Excel</button>
             </div>

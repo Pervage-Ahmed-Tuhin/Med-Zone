@@ -7,11 +7,11 @@ const Banner = ({ data }) => {
                 {data.map((medicine, index) => (
                     <div key={index}>
 
-                        <h1 className="text-4xl text-black font-semibold mt-10">{medicine.name}</h1>
+                        <h1 className="text-5xl text-black font-semibold mt-10">{medicine.name}</h1>
                         <h1 className="text-2xl text-black font-medium mt-3">{medicine.description}</h1>
 
-                        <img className="mt-5"
-                            style={{ maxWidth: '30%', height: 'auto' }}
+                        <img className="mt-5 rounded-lg"
+                            style={{ maxWidth: '40%', height: 'auto' }}
                             src={medicine.image_url}
                             alt={medicine.name}
                         />

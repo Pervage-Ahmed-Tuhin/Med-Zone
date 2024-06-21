@@ -38,9 +38,15 @@ const HomeCategory = () => {
   return (
     <div>
       <div className="my-20">
-        <h1 className="text-center text-3xl font-bold py-10">
+
+        <h1 className="text-3xl font-play-fare font-bold text-center mt-9">
+
           Medicine Category
+
         </h1>
+        <div className="divider"></div>
+        <p className="text-xl font-play-fare text-gray-400 text-center mt-4 mb-5"> Here are all the category of medicines available in this website<br /> Free to Share our website with your family</p>
+
 
         <div className="flex flex-row gap-5 flex-wrap lg:max-w-7xl mx-16 md:mx-auto justify-center">
           {category.map((soloCategory) => (

@@ -8,6 +8,7 @@ import useAxiosSecure from "../../components/Hooks/useAxiosSecure ";
 import useAuth from "../../components/Hooks/useAuth";
 import Swal from "sweetalert2";
 import axios from "axios";
+import { Helmet } from "react-helmet";
 
 const ManageMedicine = () => {
     const axiosSecure = useAxiosSecure();
@@ -26,9 +27,7 @@ const ManageMedicine = () => {
             }
         },
     });
-    useEffect(() => {
-        refetch();
-    }, [])
+
 
     const handleAddition = async (e) => {
         e.preventDefault();
@@ -205,6 +204,9 @@ const ManageMedicine = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Multi-Vendor||manageMedicine</title>
+            </Helmet>
             <h1 className="text-xl font-semibold text-center mb-7">This is the manage medicine page</h1>
             <table className="table text-xl">
                 <thead>

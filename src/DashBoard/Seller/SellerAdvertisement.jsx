@@ -9,6 +9,7 @@ import Spinner from '../../components/Spinner/Spinner';
 
 import useAuth from '../../components/Hooks/useAuth';
 import useAxiosSecure from '../../components/Hooks/useAxiosSecure ';
+import { Helmet } from 'react-helmet';
 
 const SellerAdvertisement = () => {
     const axiosSecure = useAxiosSecure();
@@ -84,6 +85,9 @@ const SellerAdvertisement = () => {
 
     return (
         <div className="container mx-auto p-4">
+            <Helmet>
+                <title>Multi-Vendor||SellerAdvertisement</title>
+            </Helmet>
             <h1 className="text-xl font-semibold text-center mt-3 mb-8">Your Advertised Products</h1>
             {isLoading ? (
                 <Spinner />

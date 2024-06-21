@@ -132,7 +132,7 @@ const Shop = () => {
           {pages.map((page) => (
             <button
               onClick={() => setCurrentPage(page)}
-              className={`btn mr-6 ${currentPage === page ? "selected" : ""}`}
+              className={`btn  mr-6 ${currentPage === page ? "selected" : ""}`}
               key={page}
             >
               {page}
@@ -196,10 +196,10 @@ const Shop = () => {
                 <td>{product.stock}</td>
                 <td>{product.vendor}</td>
                 <td>
-                  <button onClick={() => handleCartAddition(product)} className="btn">Select</button>
+                  <button onClick={() => handleCartAddition(product)} className="btn text-[#fe7a36] bg-white">Select</button>
                 </td>
                 <th>
-                  <button className="btn text-xl" onClick={() => handleViewClick(product)}>
+                  <button className="btn text-xl text-[#fe7a36] bg-white" onClick={() => handleViewClick(product)}>
                     <FaEye />
                   </button>
                 </th>

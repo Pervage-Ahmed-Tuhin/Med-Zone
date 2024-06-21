@@ -4,6 +4,7 @@ import Spinner from "../../components/Spinner/Spinner";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../components/Hooks/useAxiosSecure ";
 import useAuth from "../../components/Hooks/useAuth";
+import { Helmet } from "react-helmet";
 
 const PaymentManage = () => {
     const axiosSecure = useAxiosSecure();
@@ -71,6 +72,9 @@ const PaymentManage = () => {
 
     return (
         <div className="">
+            <Helmet>
+                <title>Multi-Vendor||paymentManagement</title>
+            </Helmet>
             <table className="table text-xl w-full overflow-x-auto">
                 <thead >
                     <tr>

@@ -30,12 +30,12 @@
 }
 
 .sidebar ul li a.active {
-    background-color: #007bff;
+    background-color: #fe7a36;
     color: white;
 }
 
 .sidebar ul li a:hover {
-    background-color: #007bff;
+    background-color: #fe7a36;
     color: white;
 }
 
@@ -54,7 +54,7 @@
         position: fixed;
         top: 10px;
         left: 10px;
-        background-color: #007bff;
+        background-color: #fe7a36;
         color: white;
         border: none;
         padding: 10px 15px;
