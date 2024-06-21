@@ -57,22 +57,22 @@ const Sidebar = () => {
                 {role === 'seller' ? <div>
                     <ul>
                         <li>
-                            <NavLink to="/dashboard" exact end activeClassName="active">
+                            <NavLink to="/dashboard/seller-home" exact end activeClassName="active">
                                 SellerHome
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to="/dashboard/manage-users" activeClassName="active">
+                            <NavLink to="/dashboard/manage-medicine" activeClassName="active">
                                 Manage medicine
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to="/dashboard/manage-category" activeClassName="active">
+                            <NavLink to="/dashboard/seller-payment-history" activeClassName="active">
                                 PaymentHistory
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to="/dashboard/payment-manage" activeClassName="active">
+                            <NavLink to="/dashboard/seller-advertisement" activeClassName="active">
                                 AskForAdvertiseMent
                             </NavLink>
                         </li>

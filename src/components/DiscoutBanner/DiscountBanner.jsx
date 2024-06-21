@@ -16,6 +16,7 @@ const DiscountBanner = () => {
             .catch(error => console.error('Error fetching discounted products:', error));
     }, []);
 
+    console.log(data);
     return (
         <div className="text-center mt-7 mb-10">
             <h1 className="text-3xl font-bold mb-5">Discounted Products</h1>
@@ -27,9 +28,9 @@ const DiscountBanner = () => {
                 className="mySwiper"
             >
                 {data.map(product => (
-                    <SwiperSlide  onClick={() => {
+                    <SwiperSlide onClick={() => {
                         navigate(`/UniqueCategory/${product.category}`);
-                      }} key={product._id} className="relative">
+                    }} key={product._id} className="relative">
                         <div
                             className="h-64 bg-cover bg-center rounded-lg overflow-hidden"
                             style={{ backgroundImage: `url(${product.image_url})` }}

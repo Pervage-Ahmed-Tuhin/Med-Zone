@@ -36,6 +36,11 @@ import PaymentManage from './DashBoard/Admin/PaymentManage.jsx';
 import SalesReport from './DashBoard/Admin/SalesReport.jsx';
 import ManageBanner from './DashBoard/Admin/ManageBanner.jsx';
 import PaymentHistory from './DashBoard/user/PaymentHistory.jsx';
+import HostRoute from './components/Hooks/HostRoute .jsx';
+import ManageMedicine from './DashBoard/Seller/ManageMedicine.jsx';
+import SellerPaymentHistory from './DashBoard/Seller/SellerPaymentHistory.jsx';
+import SellerAdvertisement from './DashBoard/Seller/SellerAdvertisement.jsx';
+import SellerHome from './DashBoard/Seller/SellerHome.jsx';
 
 
 const queryClient = new QueryClient()
@@ -117,7 +122,24 @@ const router = createBrowserRouter([
       },
       {
         path: 'payment-history',
+
         element: <PrivateRoute><PaymentHistory></PaymentHistory></PrivateRoute>
+      },
+      {
+        path: 'manage-medicine',
+        element: <PrivateRoute><HostRoute><ManageMedicine></ManageMedicine></HostRoute></PrivateRoute>
+      },
+      {
+        path: 'seller-payment-history',
+        element: <PrivateRoute><HostRoute><SellerPaymentHistory></SellerPaymentHistory></HostRoute></PrivateRoute>
+      },
+      {
+        path: 'seller-advertisement',
+        element: <PrivateRoute><HostRoute><SellerAdvertisement></SellerAdvertisement></HostRoute></PrivateRoute>
+      },
+      {
+        path: 'seller-home',
+        element: <PrivateRoute><HostRoute><SellerHome></SellerHome></HostRoute></PrivateRoute>
       }
     ]
   }
