@@ -3,10 +3,11 @@ import { FiShoppingCart } from "react-icons/fi";
 import useAuth from "../Hooks/useAuth";
 import useCart from "../Hooks/useCart";
 import Swal from "sweetalert2";
+import Spinner from "../Spinner/Spinner";
 const Navbar = () => {
 
 
-    const { user, LogOutUser } = useAuth();
+    const { user, LogOutUser, loader } = useAuth();
 
     const [cartData, refetch] = useCart();
     console.log(user);
@@ -65,6 +66,7 @@ const Navbar = () => {
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
                                 <img alt="Tailwind CSS Navbar component" src={user?.photoURL} />
+
                             </div>
                         </div>
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
@@ -85,6 +87,7 @@ const Navbar = () => {
 
                 </>
             }
+          
         </div>
     );
 };

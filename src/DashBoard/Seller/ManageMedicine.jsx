@@ -1,6 +1,6 @@
 
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import wave2 from '../../assets/img/Polygon Luminary 2.svg';
 import { useQuery } from "@tanstack/react-query";
@@ -26,6 +26,9 @@ const ManageMedicine = () => {
             }
         },
     });
+    useEffect(() => {
+        refetch();
+    }, [])
 
     const handleAddition = async (e) => {
         e.preventDefault();
@@ -212,7 +215,7 @@ const ManageMedicine = () => {
                         <th>Price</th>
                         <th>Stock</th>
                         <th>Company</th>
-                        
+
                     </tr>
                 </thead>
                 <tbody>
@@ -235,8 +238,8 @@ const ManageMedicine = () => {
                             <td>${product.price.toFixed(2)}</td>
                             <td>{product.stock}</td>
                             <td>{product.vendor}</td>
-                          
-                          
+
+
                         </tr>
                     ))}
                 </tbody>

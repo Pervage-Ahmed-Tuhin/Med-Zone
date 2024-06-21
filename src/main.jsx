@@ -137,6 +137,7 @@ const router = createBrowserRouter([
         path: 'seller-advertisement',
         element: <PrivateRoute><HostRoute><SellerAdvertisement></SellerAdvertisement></HostRoute></PrivateRoute>
       },
+
       {
         path: 'seller-home',
         element: <PrivateRoute><HostRoute><SellerHome></SellerHome></HostRoute></PrivateRoute>
