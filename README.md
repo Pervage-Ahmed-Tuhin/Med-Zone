@@ -1,6 +1,6 @@
 # Med-Zone
 
-Assignment12_category_0022
+
 
 Welcome to Med-Zone, a multi-vendor ecommerce platform designed to provide a seamless shopping experience for medical products and supplies. Explore a wide range of products from various vendors, all in one convenient location.
 
